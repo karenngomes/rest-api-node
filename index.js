@@ -2,6 +2,7 @@ var express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3000;
 const routes = require("./src/routes/crmRoutes");
+const mongoose = require("mongoose");
 
 // routes(app);
 
@@ -9,20 +10,23 @@ const routes = require("./src/routes/crmRoutes");
 //   console.log("Time", Date.now());
 // });
 
-app.get(
-  "/",
-  (req, res, next) => {
-    console.log("Request Method:", req.method);
-    next();
-  },
-  (req, res, next) => {
-    console.log("Request Original Url", req.originalUrl);
-    next();
-  },
-  (req, res, next) => {
-    res.send("Request Was Sucessful");
+mongoose.connect(
+  "mongodb://localhost/test",
+  {
+    useNewUrlParser: true
   }
 );
+
+const Cat = mongoose.model("Cat", { name: String });
+const kitty = new Cat({ name: "mimi" });
+kitty.save().then(res => {
+  console.log(res);
+  console.log("Meow");
+});
+
+app.get("/", (req, res) => {
+  console.log("Request Method:", req.method);
+});
 app.listen(PORT, () => {
   console.log(`Server is running on PORT: ${PORT}`);
 });
