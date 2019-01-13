@@ -44,7 +44,7 @@ let updateBlog = (req, res) => {
 };
 
 let deleteBlog = (req, res) => {
-  blogModel.remove({ _id: req.params.blogId }, (err, blog) => {
+  blogModel.deleteOne({ _id: req.params.blogId }, (err, blog) => {
     if (err) res.send(err);
     res.json({ message: "Blog deleted successfully" });
   });
@@ -65,6 +65,8 @@ app.post("/newBlog", (req, res) => {
 app.put("/blog/:blogId", updateBlog);
 
 app.delete("/blog/:blogId", deleteBlog);
+
+app.use(express.static("public"));
 
 app.listen(PORT, () => {
   console.log(`Server is running on PORT: ${PORT}`);
