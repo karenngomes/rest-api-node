@@ -24,7 +24,16 @@ let getAllBlogs = (req, res) => {
   });
 };
 
+let getBlogByID = (req, res) => {
+  blogModel.findById(req.params.blogId, (err, blogs) => {
+    if (err) res.send(err);
+    res.json(blogs);
+  });
+};
+
 app.get("/getBlogs", getAllBlogs);
+
+app.get("/blog/:blogId", getBlogByID);
 
 app.post("/newBlog", (req, res) => {
   let blog = new blogModel(req.body);
