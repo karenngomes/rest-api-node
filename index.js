@@ -17,6 +17,15 @@ mongoose.connect(
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+let getAllBlogs = (req, res) => {
+  blogModel.find({}, (err, blogs) => {
+    if (err) res.send(err);
+    res.json(blogs);
+  });
+};
+
+app.get("/getBlogs", getAllBlogs);
+
 app.post("/newBlog", (req, res) => {
   let blog = new blogModel(req.body);
   blog.save((err, blogModel) => {
