@@ -1,10 +1,9 @@
 var express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3000;
+const routes = require("./src/routes/crmRoutes");
 
-app.get("/", (req, res) => {
-  res.send(`Node and Express is working on port ${PORT}`);
-});
+routes(app);
 
 app.listen(PORT, () => {
   console.log(`Server is running on PORT: ${PORT}`);
