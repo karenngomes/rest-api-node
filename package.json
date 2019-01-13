@@ -1,0 +1,30 @@
+{
+  "name": "rest-api-node",
+  "version": "1.0.0",
+  "description": "Creating a Rest API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karenngomes/rest-api-node.git"
+  },
+  "keywords": [
+    "rest",
+    "api"
+  ],
+  "author": "Karen Gomes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/karenngomes/rest-api-node/issues"
+  },
+  "homepage": "https://github.com/karenngomes/rest-api-node#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
